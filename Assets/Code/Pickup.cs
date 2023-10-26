@@ -16,6 +16,9 @@ public class Pickup : MonoBehaviour
 	}
 	
 	void Update(){
+		if(Grabbed){
+			transform.position = Grabber.position;
+		}
 		if(Input.GetMouseButtonDown(1)){
 			if(Grabbed){
 				ThrowObject();
@@ -47,7 +50,7 @@ public class Pickup : MonoBehaviour
 			GetComponent<BoxCollider>().enabled = false;
 			rb.useGravity = false;
 			/*GetComponent<Rigidbody>().useGravity = false;*/
-			transform.position = Grabber.position;
+			/*transform.position = Grabber.position;*/
 			transform.parent = GameObject.Find("InvisibleHand").transform;
 			/*this.transform.position = Grabber.position;
 			this.transform.parent = GameObject.Find("InvisibleHand").transform;*/
