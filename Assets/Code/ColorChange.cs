@@ -68,9 +68,7 @@ public class ColorChange : MonoBehaviour
     {
         if (col.gameObject.tag == "BlueObstacle" && rend.material.color == Color.blue)
         {
-            print("Contact");
-            collider.enabled = !collider.enabled;
-            StartCoroutine (Timer());
+            StartCoroutine (Timer(col.collider));
         }
     }
 
@@ -78,7 +76,7 @@ public class ColorChange : MonoBehaviour
     {
         if (col.gameObject.tag == "BlueObstacle")
         {
-            print("drowning");
+            //print("drowning");
         }
     }
 
@@ -87,14 +85,19 @@ public class ColorChange : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            rend.material.color = Color.grey;
+            rend.material.color = Color.white;
         }
     }
-
-    private IEnumerator Timer()
+    
+    //Turns on collisions after 1 second
+    private IEnumerator Timer(Collider Faze)
     {
-        yield return new WaitForSeconds (1f);
+        Faze.isTrigger = true;
+        print(Faze.isTrigger);
 
-        collider.enabled = !collider.enabled;
+        yield return new WaitForSeconds (1.0f);
+
+        Faze.isTrigger = false;
+        print(Faze.isTrigger);
     }
 }

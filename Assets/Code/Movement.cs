@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 95f;
+        speed = 0f;
     }
 
     // Update is called once per frame
