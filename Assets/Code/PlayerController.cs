@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void Jump()
+    {
+        _rb.AddForce(Vector3.up * _jumpForce);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,9 +28,16 @@ public class PlayerController : MonoBehaviour
         vel.y = _rb.velocity.y;
         _rb.velocity = vel;
 
-        if (Input.GetKeyDown(KeyCode.Space)) 
-            _rb.AddForce(Vector3.up * _jumpForce);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("JumpTrigger");
+            Invoke("Jump", 0.7f);
+        }
 
+        /*if (_rb.velocity > 0)
+        {
+            anim.SetBool("IsMoving", true);
+        }*/
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
         //transform.Translate(Input.GetAxis("Vertical") * 0f, 0f, Time.deltaTime);
     }
