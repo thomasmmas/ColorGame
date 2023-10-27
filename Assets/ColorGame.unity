@@ -1909,9 +1909,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6016773303004985008}
     - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e5c5e129bde835d4f9fdf15519585d86, type: 2}
+      objectReference: {fileID: 2100000, guid: f188e8b76b3f1714885fd82571ffcef2, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf6b3297bf5baff4c8974ce58c7b9e1e, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 492e1e033f7ad424ab9f5a7f1236970b, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10050d56f31a1ed4daf88a58f58cd0c7, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8581c8b4a6fea48822e8606c9d2567, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ff7a0f2f9d7bfa4ba16548feb36764c, type: 2}
+    - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85f2d69c03d094049844b95451d99473, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
 --- !u!1001 &419901401
@@ -3038,27 +3066,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &662176870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149568620069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6603f6c8245cd054eb5e10abb1cce0f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material:
-  - {fileID: 2100000, guid: f188e8b76b3f1714885fd82571ffcef2, type: 2}
-  - {fileID: 2100000, guid: cf6b3297bf5baff4c8974ce58c7b9e1e, type: 2}
-  - {fileID: 2100000, guid: 492e1e033f7ad424ab9f5a7f1236970b, type: 2}
-  - {fileID: 2100000, guid: 10050d56f31a1ed4daf88a58f58cd0c7, type: 2}
-  - {fileID: 2100000, guid: de8581c8b4a6fea48822e8606c9d2567, type: 2}
-  - {fileID: 2100000, guid: 6ff7a0f2f9d7bfa4ba16548feb36764c, type: 2}
-  - {fileID: 2100000, guid: 85f2d69c03d094049844b95451d99473, type: 2}
-  time: 1
 --- !u!136 &662176872
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9850,6 +9857,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 579d2e6a5c3ddad4c9989c7a14f94745, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31aa36d1b523350488e53308fdacf74f, type: 3}
+--- !u!1 &1943171076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2615453208677245630, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
+  m_PrefabInstance: {fileID: 413203316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1956687059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11596,8 +11608,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
   m_PrefabInstance: {fileID: 413203316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132149568620071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149568620069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6603f6c8245cd054eb5e10abb1cce0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: f188e8b76b3f1714885fd82571ffcef2, type: 2}
+  - {fileID: 2100000, guid: cf6b3297bf5baff4c8974ce58c7b9e1e, type: 2}
+  - {fileID: 2100000, guid: 492e1e033f7ad424ab9f5a7f1236970b, type: 2}
+  - {fileID: 2100000, guid: 10050d56f31a1ed4daf88a58f58cd0c7, type: 2}
+  - {fileID: 2100000, guid: de8581c8b4a6fea48822e8606c9d2567, type: 2}
+  - {fileID: 2100000, guid: 6ff7a0f2f9d7bfa4ba16548feb36764c, type: 2}
+  - {fileID: 2100000, guid: 85f2d69c03d094049844b95451d99473, type: 2}
+  time: 1
 --- !u!4 &6016773303004985008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3206598734262923836, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
   m_PrefabInstance: {fileID: 413203316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6016773303004985010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943171076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6603f6c8245cd054eb5e10abb1cce0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: f188e8b76b3f1714885fd82571ffcef2, type: 2}
+  - {fileID: 2100000, guid: cf6b3297bf5baff4c8974ce58c7b9e1e, type: 2}
+  - {fileID: 2100000, guid: 492e1e033f7ad424ab9f5a7f1236970b, type: 2}
+  - {fileID: 2100000, guid: 10050d56f31a1ed4daf88a58f58cd0c7, type: 2}
+  - {fileID: 2100000, guid: de8581c8b4a6fea48822e8606c9d2567, type: 2}
+  - {fileID: 2100000, guid: 6ff7a0f2f9d7bfa4ba16548feb36764c, type: 2}
+  - {fileID: 2100000, guid: 85f2d69c03d094049844b95451d99473, type: 2}
+  time: 1
