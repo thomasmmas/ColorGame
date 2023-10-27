@@ -1910,12 +1910,12 @@ PrefabInstance:
       objectReference: {fileID: 6016773303004985008}
     - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f188e8b76b3f1714885fd82571ffcef2, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8133901225270580312, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -3099,8 +3099,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e5c5e129bde835d4f9fdf15519585d86, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11807,7 +11806,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
   m_PrefabInstance: {fileID: 413203316}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &919132149568620071
+--- !u!114 &919132149568620073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11833,7 +11832,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3206598734262923836, guid: 6c80f21f3dcea0f4094c264d1564299e, type: 3}
   m_PrefabInstance: {fileID: 413203316}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6016773303004985010
+--- !u!114 &6016773303004985012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11854,3 +11853,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6ff7a0f2f9d7bfa4ba16548feb36764c, type: 2}
   - {fileID: 2100000, guid: 85f2d69c03d094049844b95451d99473, type: 2}
   time: 1
+--- !u!136 &6016773303004985013
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943171076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.04
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0.004}
