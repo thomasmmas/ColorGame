@@ -31,4 +31,12 @@ public class Movement : MonoBehaviour
             /*transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0f, Input.GetAxis("Vertical") * Time.deltaTime * speed);*/
         }
     }
+    void FixedUpdate(){
+        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputVertical = Input.GetAxis("Vertical");
+
+        Vector3 moveDirection = new Vector3(inputHorizontal, 0, inputVertical).normalized;
+        Vector3 movement = moveDirection * moveSpeed * Time.fixedDeltaTime;
+        rb.velocity = movement;
+    }
 }
