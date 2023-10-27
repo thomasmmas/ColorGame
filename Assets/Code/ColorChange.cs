@@ -7,8 +7,6 @@ public class ColorChange : MonoBehaviour
     public Material[] material;
     Renderer rend;
     Collider collider;
-    SkinnedMeshRenderer meshRenderer;
-    Material materialUsed;
 
     public float time = 1.0f;
 
@@ -38,7 +36,6 @@ public class ColorChange : MonoBehaviour
         else if (col.gameObject.tag == "BluePuddle")
         {
             rend.sharedMaterial = material[1];
-            meshRenderer.materials[1] = materialUsed;
         }
         else if (col.gameObject.tag == "YellowPuddle" && rend.material.color == Color.blue)
         {
