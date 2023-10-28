@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float rotationSmoothing = 10.0f;
     private Animator anim;
+
+    float actionCooldown = 1.0f;
+    float timeSinceAction = 0.0f;
 
     private Vector3 currentLookDirection;
 
@@ -46,13 +50,26 @@ public class PlayerController : MonoBehaviour
         vel.y = _rb.velocity.y;
         _rb.velocity = vel;
 
+        if (Math.Abs(Input.GetAxis("Horizontal")) > 0 || Math.Abs(Input.GetAxis("Vertical")) > 0)
+        {
+            anim.SetBool("IsMoving", true);
+        }
+        else
+        {
+            anim.SetBool("IsMoving", false);
+        }
 
 
+        timeSinceAction += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("JumpTrigger");
-            Invoke("Jump", 0.7f);
+            if (GroundCheck() & timeSinceAction > actionCooldown)
+            {
+                timeSinceAction = 0;
+                anim.SetTrigger("JumpTrigger");
+                Invoke("Jump", 0.7f);
+            }
         }
 
 
@@ -63,5 +80,21 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         _rb.AddForce(Vector3.up * _jumpForce);
+    }
+
+    bool GroundCheck()
+    {
+        RaycastHit hit;
+        float distance = 1f;
+        Vector3 dir = new Vector3(0, -1);
+
+        if (Physics.Raycast(transform.position, dir, out hit, distance))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
