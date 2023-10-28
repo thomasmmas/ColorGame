@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColorChange : MonoBehaviour
 {
     public Material[] material;
+    public Rigidbody rb;
     Renderer rend;
     Collider collider;
 
@@ -21,6 +22,9 @@ public class ColorChange : MonoBehaviour
 
         //collisions
         collider = GetComponent<Collider>();
+
+        //rigidbody for mass
+        rb = GetComponent<Rigidbody>();
     }
 
     //Color changes
@@ -37,7 +41,6 @@ public class ColorChange : MonoBehaviour
         else if (col.gameObject.tag == "BluePuddle")
         {
             rend.sharedMaterial = material[1];
-            print("blue");
         }
         else if (col.gameObject.tag == "YellowPuddle" && rend.material.color == Color.blue)
         {
@@ -80,6 +83,7 @@ public class ColorChange : MonoBehaviour
         else if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.yellow || rend.material.color == Color.red))
         {
             collider.material.dynamicFriction = 100000;
+            rb.mass = 100;
         }
     }
 
@@ -98,6 +102,7 @@ public class ColorChange : MonoBehaviour
         {
             rend.material.color = Color.white;
             collider.material.dynamicFriction = 1;
+            rb.mass = 5;
         }
     }
     

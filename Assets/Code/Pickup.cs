@@ -11,10 +11,16 @@ public class Pickup : MonoBehaviour
     private Rigidbody rb;
     private Camera mainCamera;
 
+    //For color change
+    Renderer materialRend;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+
+        //For color change
+        materialRend = GetComponent<Renderer>();
     }
 
     void Update()
@@ -23,12 +29,19 @@ public class Pickup : MonoBehaviour
         {
             transform.position = Grabber.position;
         }
+
         if (Input.GetMouseButtonDown(1))
         {
             if (Grabbed)
             {
                 ThrowObject();
             }
+        }
+
+        //Pressing "Q" changes color of rock
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            materialRend.material.color = Color.red;
         }
     }
 
