@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BackGroundMusic1 : MonoBehaviour
 {
-  public AudioSource audiotrack;
+  public MusicManager musicManager;
+  public int trackIndex = 0;
 
   void OnTriggerEnter(Collider other)
   {
-		if(other.CompareTag("MainGuyRig") && !audiotrack.isPlaying)
+		if(other.CompareTag("MainGuyRig"))
 		{
-			audiotrack.Play();
+			musicManager.PlayMusicTrack(trackIndex);
 		}
   }
 }

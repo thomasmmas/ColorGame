@@ -8,6 +8,7 @@ TagManager:
   - YellowPuddle
   - RedPuddle
   - BlueObstacle
+  - MainGuyRig
   layers:
   - Default
   - TransparentFX
