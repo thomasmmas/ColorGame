@@ -8,7 +8,7 @@ public class BackGroundMusic1 : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
-		if(other.tag == "MainGuyRig" && !audiotrack.isPlaying)
+		if(other.CompareTag("MainGuyRig") && !audiotrack.isPlaying)
 		{
 			audiotrack.Play();
 		}
