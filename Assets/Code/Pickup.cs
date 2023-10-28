@@ -10,10 +10,12 @@ public class Pickup : MonoBehaviour
     private Vector3 originalPos;
     private Vector3 throwDir;
     private Rigidbody rb;
+    private Camera mainCamera;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -77,6 +79,8 @@ public class Pickup : MonoBehaviour
         if (Grabbed)
         {
             ReleaseObject();
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Vector3 throwDir = ray.direction;
 
             rb.velocity = throwDir * 40f;
 
