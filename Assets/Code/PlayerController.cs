@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private Vector3 currentLookDirection;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,15 +25,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        
+
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
         Vector3 directionToMouse = mousePosition - transform.position;
         directionToMouse.y = 0;
 
-        if(directionToMouse != Vector3.zero){
+        if (directionToMouse != Vector3.zero)
+        {
             Vector3 targetLookDirection = directionToMouse.normalized;
-            currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime *rotationSmoothing);
+            currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
             transform.forward = currentLookDirection * mouseSensitivity;
         }
 
@@ -46,14 +47,14 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = vel;
 
 
-      
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("JumpTrigger");
             Invoke("Jump", 0.7f);
         }
-           
+
 
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
         //transform.Translate(Input.GetAxis("Vertical") * 0f, 0f, Time.deltaTime);
@@ -63,5 +64,4 @@ public class PlayerController : MonoBehaviour
     {
         _rb.AddForce(Vector3.up * _jumpForce);
     }
-
 }
