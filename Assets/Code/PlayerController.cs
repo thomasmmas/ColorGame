@@ -48,12 +48,20 @@ public class PlayerController : MonoBehaviour
 
       
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-             _rb.AddForce(Vector3.up * _jumpForce);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("JumpTrigger");
+            Invoke("Jump", 0.7f);
         }
            
 
         //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
         //transform.Translate(Input.GetAxis("Vertical") * 0f, 0f, Time.deltaTime);
     }
+
+    void Jump()
+    {
+        _rb.AddForce(Vector3.up * _jumpForce);
+    }
+
 }
