@@ -11,6 +11,8 @@ public class ColorChange : MonoBehaviour
 
     public float time = 1.0f;
 
+    public AudioSource[] SoundEffect;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,8 @@ public class ColorChange : MonoBehaviour
     //Color changes
     void OnTriggerEnter(Collider col)
     {
+        SoundEffect[3].Play();
+
         if (col.gameObject.tag == "BluePuddle" && rend.material.color == Color.yellow)
         {
             rend.sharedMaterial = material[4];
@@ -75,15 +79,15 @@ public class ColorChange : MonoBehaviour
         {
             StartCoroutine (Timer(col.collider));
         }
-
-        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color[1] == 128 || rend.material.color == Color.magenta))
-        {
-            collider.material.dynamicFriction = 1;
-        }
         else if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.yellow || rend.material.color == Color.red))
         {
             collider.material.dynamicFriction = 100000;
             rb.mass = 100;
+            SoundEffect[1].Play();
+        }
+        else
+        {
+            SoundEffect[0].Play();
         }
     }
 
@@ -103,6 +107,7 @@ public class ColorChange : MonoBehaviour
             rend.material.color = Color.white;
             collider.material.dynamicFriction = 1;
             rb.mass = 5;
+            SoundEffect[4].Play();
         }
     }
     
@@ -110,6 +115,8 @@ public class ColorChange : MonoBehaviour
     private IEnumerator Timer(Collider Faze)
     {
         Faze.isTrigger = true;
+
+        SoundEffect[2].Play();
 
         yield return new WaitForSeconds (1.0f);
 
