@@ -72,7 +72,7 @@ public class Pickup : MonoBehaviour
         Grabbed = true;
         originalPos = transform.position;
 
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<MeshCollider>().enabled = false;
         rb.useGravity = false;
         transform.parent = GameObject.Find("InvisibleHand").transform;
     }
@@ -81,7 +81,7 @@ public class Pickup : MonoBehaviour
     {
         Grabbed = false;
         transform.parent = null;
-        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<MeshCollider>().enabled = true;
         rb.useGravity = true;
     }
 
