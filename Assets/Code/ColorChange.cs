@@ -93,9 +93,10 @@ public class ColorChange : MonoBehaviour
 
     void OnCollisionStay(Collision col)
     {
-        if (col.gameObject.tag == "BlueObstacle")
+        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
         {
-            //print("drowning");
+            print("swimming");
+            SoundEffect[5].Play();
         }
     }
 
