@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float rotationSmoothing = 10.0f;
+    [SerializeField] private Rect turningArea = new Rect(0.4f, 0.4f, 0.4f, 0.4f);
     private Animator anim;
 
     float actionCooldown = 1.0f;
@@ -22,24 +23,31 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         currentLookDirection = transform.forward;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
-        Vector3 directionToMouse = mousePosition - transform.position;
-        directionToMouse.y = 0;
 
-        if (directionToMouse != Vector3.zero)
+        float normalizedX = mousePosition.x / Screen.width;
+        float normalizedY = mousePosition.y / Screen.height;
+
+        if(!turningArea.Contains(new Vector2(normalizedX, normalizedY)))
         {
-            Vector3 targetLookDirection = directionToMouse.normalized;
-            currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
-            transform.forward = currentLookDirection * mouseSensitivity;
+            mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
+            Vector3 directionToMouse = mousePosition - transform.position;
+            directionToMouse.y = 0;
+
+            if (directionToMouse != Vector3.zero)
+            {
+                Vector3 targetLookDirection = directionToMouse.normalized;
+                currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
+            
+                // Use Quaternion to smoothly rotate the player
+                Quaternion targetRotation = Quaternion.LookRotation(currentLookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothing);
+            }
         }
 
         var horizontalInput = Input.GetAxis("Horizontal");
@@ -59,7 +67,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("IsMoving", false);
         }
 
-
         timeSinceAction += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -71,10 +78,6 @@ public class PlayerController : MonoBehaviour
                 Invoke("Jump", 0.7f);
             }
         }
-
-
-        //transform.Translate(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
-        //transform.Translate(Input.GetAxis("Vertical") * 0f, 0f, Time.deltaTime);
     }
 
     void Jump()
@@ -98,3 +101,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
