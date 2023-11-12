@@ -6,6 +6,7 @@ using TMPro;
 public class Dialogue1 : MonoBehaviour
 {
     public TextMeshProUGUI textComp;
+    [TextArea(3, 10)]
     public string[] Dlines;
     public float textSpeed;
     public AudioSource dialogueAudio;
