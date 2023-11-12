@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ColorGame.unity
+    guid: 9a74ee37508a3da44b3af57eb39ff673
+  - enabled: 1
+    path: Assets/HelperUI.unity
+    guid: 75023ad408bd2f8478d8321f6e1b31ab
   m_configObjects: {}
