@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSmoothing = 10.0f;
     [SerializeField] private Rect turningArea = new Rect(0.4f, 0.4f, 0.4f, 0.4f);
     private Animator anim;
+    public GameObject footstep;
+    public GameObject JumpSE;
 
     float actionCooldown = 1.0f;
     float timeSinceAction = 0.0f;
@@ -22,12 +24,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        footstep.SetActive(false);
+        JumpSE.SetActive(false);
         currentLookDirection = transform.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Vector3 mousePosition = Input.mousePosition;
 
         float normalizedX = mousePosition.x / Screen.width;
@@ -61,10 +66,19 @@ public class PlayerController : MonoBehaviour
         if (Math.Abs(Input.GetAxis("Horizontal")) > 0 || Math.Abs(Input.GetAxis("Vertical")) > 0)
         {
             anim.SetBool("IsMoving", true);
+            if (GroundCheck())
+            {
+                footstep.SetActive(true);
+            }
+            else
+            {
+                footstep.SetActive(false);
+            }
         }
         else
         {
             anim.SetBool("IsMoving", false);
+            footstep.SetActive(false);
         }
 
         timeSinceAction += Time.deltaTime;
@@ -75,6 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 timeSinceAction = 0;
                 anim.SetTrigger("JumpTrigger");
+                footstep.SetActive(false);
                 Invoke("Jump", 0.7f);
             }
         }
@@ -83,6 +98,13 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         _rb.AddForce(Vector3.up * _jumpForce);
+        JumpSE.SetActive(true);
+        Invoke("JumpSE_Disable", 0.7f);
+    }
+
+    void JumpSE_Disable()
+    {
+        JumpSE.SetActive(false);
     }
 
     bool GroundCheck()
