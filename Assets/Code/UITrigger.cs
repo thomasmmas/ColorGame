@@ -1,9 +1,32 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UITrigger : MonoBehaviour
 {
-      // Reference to the Dialogue1 script on the HelperUI canvas
+   public string uiSceneName = "HelperUI2";
+   public GameObject uiCanvas; // Reference to your UI Canvas or UI elements
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MainGuyRig")) // Make sure the object entering the trigger is the player
+        {
+            SceneManager.LoadScene(uiSceneName, LoadSceneMode.Additive);
+            uiCanvas.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("MainGuyRig")) // Make sure the object exiting the trigger is the player
+        {
+            SceneManager.UnloadSceneAsync(uiSceneName);
+            uiCanvas.SetActive(false);
+        }
+    }
+}
+
+    /*  // Reference to the Dialogue1 script on the HelperUI canvas
     public Dialogue1 dialogueBox; // Assuming Dialogue1 is a script attached to a dialogue box
 
     private void OnTriggerEnter(Collider other)
@@ -28,5 +51,4 @@ public class UITrigger : MonoBehaviour
                 dialogueBox.EndDialogue(); // Adjust this based on your Dialogue1 implementation
             }
         }
-    }
-}*/
+    }*/
