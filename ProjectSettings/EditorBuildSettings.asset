@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HelperUI2.unity
     guid: 13aeef2459460024b84ea677d0582a13
+  - enabled: 1
+    path: Assets/HelperUI3.unity
+    guid: 8b7f75b77d75b614fa8d283a58d60eb6
   m_configObjects: {}
