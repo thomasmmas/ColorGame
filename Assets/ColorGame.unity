@@ -3095,8 +3095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5f75ea98a6f534b8b6e9e41d412423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageText: {fileID: 0}
-  messages: []
 --- !u!4 &437671005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f05b9bffd143c694ab1648eb207477bb, type: 3}
@@ -4767,8 +4765,8 @@ MonoBehaviour:
   _speed: 5
   _jumpForce: 2000
   _rb: {fileID: 5866666021500241638}
-  mouseSensitivity: 10000
-  rotationSmoothing: 5
+  mouseSensitivity: 2
+  rotationSmoothing: 10
   turningArea:
     serializedVersion: 2
     x: 0.3
@@ -15939,7 +15937,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!137 &5866666021500241639
 SkinnedMeshRenderer:

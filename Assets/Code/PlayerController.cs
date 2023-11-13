@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
         float normalizedX = mousePosition.x / Screen.width;
         float normalizedY = mousePosition.y / Screen.height;
 
-        if(!turningArea.Contains(new Vector2(normalizedX, normalizedY)))
+        if(!turningArea.Contains(new Vector2(normalizedX, normalizedY)) && GroundCheck())
         {
+            {
+                RotateTowardsMouse();
+            }
             mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
             Vector3 directionToMouse = mousePosition - transform.position;
             directionToMouse.y = 0;
@@ -102,6 +105,34 @@ public class PlayerController : MonoBehaviour
         Invoke("JumpSE_Disable", 0.7f);
     }
 
+    private void RotateTowardsMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            // Check if the hit object has a Box Collider
+            if (hit.collider != null && hit.collider is BoxCollider)
+            {
+                // Do not rotate the character when colliding with objects that have Box Colliders
+                return;
+            }
+
+            // If the condition is not met, continue with rotation logic
+            Vector3 directionToMouse = hit.point - transform.position;
+            directionToMouse.y = 0;
+
+            if (directionToMouse != Vector3.zero)
+            {
+                Vector3 targetLookDirection = directionToMouse.normalized;
+                currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
+
+                Quaternion targetRotation = Quaternion.LookRotation(currentLookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothing);
+            }
+        }
+    }
     void JumpSE_Disable()
     {
         JumpSE.SetActive(false);
