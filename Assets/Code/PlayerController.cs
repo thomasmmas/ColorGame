@@ -33,26 +33,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+
         Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
+        Vector3 directionToMouse = mousePosition - transform.position;
+        directionToMouse.y = 0;
 
-        float normalizedX = mousePosition.x / Screen.width;
-        float normalizedY = mousePosition.y / Screen.height;
-
-        if(!turningArea.Contains(new Vector2(normalizedX, normalizedY)))
+        if (directionToMouse != Vector3.zero)
         {
-            mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
-            Vector3 directionToMouse = mousePosition - transform.position;
-            directionToMouse.y = 0;
-
-            if (directionToMouse != Vector3.zero)
-            {
-                Vector3 targetLookDirection = directionToMouse.normalized;
-                currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
-            
-                // Use Quaternion to smoothly rotate the player
-                Quaternion targetRotation = Quaternion.LookRotation(currentLookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothing);
-            }
+            Vector3 targetLookDirection = directionToMouse.normalized;
+            currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
+            transform.forward = currentLookDirection * mouseSensitivity;
         }
 
         var horizontalInput = Input.GetAxis("Horizontal");
