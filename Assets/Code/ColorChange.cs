@@ -85,12 +85,18 @@ public class ColorChange : MonoBehaviour
             rb.mass = 100;
             SoundEffect[1].Play();
         }
+        else if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
+        {
+            StartCoroutine(Swimming(col.collider));
+            rb.mass = 10;
+        }
         else
         {
             SoundEffect[0].Play();
         }
     }
 
+    /*
     void OnCollisionStay(Collision col)
     {
         if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
@@ -99,6 +105,7 @@ public class ColorChange : MonoBehaviour
             SoundEffect[5].Play();
         }
     }
+    */
 
     // Update is called once per frame
     void Update()
@@ -122,5 +129,16 @@ public class ColorChange : MonoBehaviour
         yield return new WaitForSeconds (1.0f);
 
         Faze.isTrigger = false;
+    }
+
+    //Turns on collisions after 1 second
+    private IEnumerator Swimming(Collider Faze)
+    {
+        Faze.isTrigger = true;
+
+        yield return new WaitForSeconds(3.0f);
+
+        Faze.isTrigger = false;
+        rb.mass = 5;
     }
 }

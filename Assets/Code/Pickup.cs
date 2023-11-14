@@ -42,7 +42,7 @@ public class Pickup : MonoBehaviour
         //Pressing "Q" changes color of rock
         if (Grabbed && Input.GetKeyDown(KeyCode.Q))
         {
-            mainGuy = GameObject.Find("MainGuyRig");
+            mainGuy = GameObject.Find("MainCharacter");
             materialRend.material.color = mainGuy.GetComponent<Renderer>().material.GetColor("_Color");
         }
     }
@@ -97,7 +97,7 @@ public class Pickup : MonoBehaviour
 
             Debug.Log("Throw direction" + throwDir);
             // Apply force in the direction of the mouse cursor
-            rb.velocity = throwDir * 40f;
+            rb.velocity = throwDir * 30f;
         }
     }
 
@@ -106,6 +106,12 @@ public class Pickup : MonoBehaviour
         if (col.gameObject.tag == "BlueObstacle" && materialRend.material.color == Color.red)
         {
             rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.freezeRotation = true;
+        }
+        else if (col.gameObject.tag == "GreenObject" && (materialRend.material.color == Color.magenta || materialRend.material.color.g == 128))
+        {
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.freezeRotation = true;
         }
     }
 }

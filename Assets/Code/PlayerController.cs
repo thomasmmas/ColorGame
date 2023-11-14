@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public GameObject footstep;
     public GameObject JumpSE;
+    public GameObject SE_Swimming;
+    public bool swimming;
+
+    Renderer rend;
 
     float actionCooldown = 1.0f;
     float timeSinceAction = 0.0f;
@@ -26,7 +30,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         footstep.SetActive(false);
         JumpSE.SetActive(false);
+        SE_Swimming.SetActive(false);
         currentLookDirection = transform.forward;
+        swimming = false;
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
     }
 
     // Update is called once per frame
@@ -76,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (GroundCheck() & timeSinceAction > actionCooldown)
+            if ((GroundCheck() & timeSinceAction > actionCooldown) || swimming == true)
             {
                 timeSinceAction = 0;
                 anim.SetTrigger("JumpTrigger");
@@ -111,6 +119,26 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
+        {
+            print("swimming");
+            swimming = true;
+            SE_Swimming.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
+        {
+            print("not swimming");
+            swimming = false;
+            SE_Swimming.SetActive(false);
         }
     }
 }
