@@ -163,10 +163,8 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 23
   - m_Index: 59
     m_Metrics:
-    m_GlyphRect:
       m_Width: 79.453125
       m_Height: 108.703125
       m_HorizontalBearingX: 0.84375
@@ -182,15 +180,12 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 65
     m_Metrics:
-      m_HorizontalBearingY: 106.59375
       m_Width: 55.6875
       m_Height: 105.046875
       m_HorizontalBearingX: 12.9375
       m_HorizontalBearingY: 104.90625
       m_HorizontalAdvance: 52.171875
     m_GlyphRect:
-      m_X: 11
-      m_Y: 178
       m_X: 320
       m_Y: 11
       m_Width: 57
@@ -250,12 +245,10 @@ MonoBehaviour:
       m_HorizontalBearingX: 1.125
       m_HorizontalBearingY: 106.171875
       m_HorizontalAdvance: 49.078125
-      m_Y: 11
-    m_AtlasIndex: 0
-      m_Height: 106.3125
     m_GlyphRect:
       m_X: 11
       m_Y: 49
+      m_Width: 65
       m_Height: 108
     m_Scale: 1
     m_AtlasIndex: 0
@@ -298,7 +291,6 @@ MonoBehaviour:
       m_HorizontalBearingY: 104.90625
       m_HorizontalAdvance: 52.171875
     m_GlyphRect:
-      m_Y: 139
       m_X: 320
       m_Y: 138
       m_Width: 57
@@ -308,24 +300,8 @@ MonoBehaviour:
     m_ClassDefinitionType: 0
   - m_Index: 100
     m_Metrics:
-      m_Height: 103.921875
-      m_Height: 105
-      m_X: 549
-    m_AtlasIndex: 0
       m_Width: 98.296875
       m_Height: 107.15625
-      m_HorizontalBearingY: 104.625
-      m_Height: 104.203125
-      m_Height: 105
-      m_HorizontalBearingX: 5.625
-      m_Height: 107
-      m_Height: 108.703125
-      m_Height: 109
-    m_Scale: 1
-      m_Width: 75.796875
-      m_Width: 76
-      m_Height: 112
-    m_Metrics:
       m_HorizontalBearingX: 5.90625
       m_HorizontalBearingY: 106.59375
       m_HorizontalAdvance: 86.484375
@@ -337,16 +313,10 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-      m_HorizontalBearingX: 1.96875
-    m_Scale: 1
   - m_Index: 101
     m_Metrics:
-    m_ClassDefinitionType: 0
       m_Width: 80.296875
       m_Height: 106.453125
-      m_HorizontalAdvance: 62.296875
-      m_X: 106
-      m_Width: 71
       m_HorizontalBearingX: -5.203125
       m_HorizontalBearingY: 105.046875
       m_HorizontalAdvance: 59.203125
