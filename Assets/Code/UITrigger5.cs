@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UITrigger4 : MonoBehaviour
+public class UITrigger5 : MonoBehaviour
 {
-    public string uiSceneName = "HelperUI4";
+    public string uiSceneName = "HelperUI5";
     public GameObject uiCanvas; // Reference to your UI Canvas or UI elements
 
     private void OnTriggerEnter(Collider other)
