@@ -266,15 +266,15 @@ RectTransform:
   m_GameObject: {fileID: 241939895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6130002, y: 5.5798254, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 6.9185677, z: 1.2399255}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 740830396}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -454, y: 309}
+  m_AnchoredPosition: {x: -423, y: 272}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241939897
@@ -720,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -386}
+  m_AnchoredPosition: {x: 0, y: -324}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740830397
@@ -775,11 +775,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComp: {fileID: 2056307258}
   Dlines:
-  - 'Hey, Are you seeing this? Yes? Okay, Good! I can finally communicate with you
-    from inside the castle. Pretty cool, huh? Ok! So here''s what you need to do
-    here. You see those puddles on the ground? '
-  - You need to somehow make orange from those colors in order to cross the bridge.
-    Do you think you can do it?
+  - Hey, Are you seeing this? Yes? Okay, Good! I can communicate with you from inside
+    the castle. Pretty cool, huh?
+  - From here you need to become the complimentary color of the bridge so you can
+    walk across it. Let's see if you can make orange with the provided puddles to
+    do this.
+  - If you make a mistake you can just release the color (Q). Good luck!
   textSpeed: 0.01
   dialogueAudio: {fileID: 394617457}
 --- !u!1 &1191162213
@@ -810,8 +811,8 @@ RectTransform:
   m_GameObject: {fileID: 1191162213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3957326, y: 7.9203033, z: 1.928}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.4, y: 7.9344115, z: 1.9314343}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 740830396}
   m_RootOrder: 1
@@ -1038,15 +1039,15 @@ RectTransform:
   m_GameObject: {fileID: 2056307256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.613, y: 6.9737353, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 6.485184, z: 0.92994416}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 740830396}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -58, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056307258
