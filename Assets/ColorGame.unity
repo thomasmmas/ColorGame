@@ -5341,6 +5341,7 @@ GameObject:
   - component: {fileID: 606425500}
   - component: {fileID: 606425502}
   - component: {fileID: 606425501}
+  - component: {fileID: 606425503}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -5414,6 +5415,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &606425503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606425499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b76d546a1c97434e95f378f87db76da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerBody: {fileID: 543450653286833311}
+  orientation: {fileID: 543450653286833311}
 --- !u!4 &612619023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 186ad8f063dbf430da4d56ebc0cb14e0, type: 3}
@@ -5752,7 +5768,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149568620069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c808feaf833183c4daae33f5cf84f794, type: 3}
   m_Name: 
@@ -19572,6 +19588,7 @@ GameObject:
   - component: {fileID: 919132149568620073}
   - component: {fileID: 5866666021500241639}
   - component: {fileID: 5866666021500241638}
+  - component: {fileID: 5866666021500241640}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: MainGuyRig
@@ -20135,6 +20152,33 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000026919879, y: 0.0036702417, z: 0.0025179852}
     m_Extent: {x: 0.01502983, y: 0.032963563, z: 0.011824809}
   m_DirtyAABB: 0
+--- !u!114 &5866666021500241640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149568620069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8224a49fe0f03348adc2522e6340a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _jumpForce: 2000
+  _rb: {fileID: 5866666021500241638}
+  mouseSensitivity: 2
+  rotationSmoothing: 10
+  turningArea:
+    serializedVersion: 2
+    x: 0.4
+    y: 0.4
+    width: 0.4
+    height: 0.4
+  footstep: {fileID: 1396507259}
+  JumpSE: {fileID: 390132822}
+  SE_Swimming: {fileID: 1184401202}
+  swimming: 0
 --- !u!4 &5901452235385638428
 Transform:
   m_ObjectHideFlags: 0
