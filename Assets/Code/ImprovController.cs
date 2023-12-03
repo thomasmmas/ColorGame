@@ -33,8 +33,8 @@ public class ImprovController : MonoBehaviour
         swimming = false;
         rend = GetComponent<Renderer>();
         rend.enabled = true;
-        /*Cursor.lockState = CursorLockMode.Locked;*/
-        /*Cursor.visible = false;*/
+        /*Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;*/
     }
 
     // Update is called once per frame
@@ -55,7 +55,9 @@ public class ImprovController : MonoBehaviour
 
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
-        var moveDirection = currentLookDirection * verticalInput + transform.right * horizontalInput;
+
+        var moveDirection = currentLookDirection * verticalInput /*+ transform.right * horizontalInput*/;
+        moveDirection += transform.right * horizontalInput;
         moveDirection.Normalize();
         var vel = moveDirection * _speed;
         vel.y = _rb.velocity.y;
@@ -91,6 +93,22 @@ public class ImprovController : MonoBehaviour
                 Invoke("Jump", 0.7f);
             }
         }
+        /*if (Input.GetMouseButtonDown(0))
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = Cursor.lockState != CursorLockMode.Locked;
+        }*/
+
+      
     }
 
     void Jump()
@@ -140,4 +158,21 @@ public class ImprovController : MonoBehaviour
             SE_Swimming.SetActive(false);
         }
     }
+    /*bool IsInteractingWithObject()
+    {
+        // Implement your logic to check if the player is interacting with an object here
+        // For example, raycasting to detect interactable objects
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+        {
+            // Check if the hit object is interactable
+            // Adjust this logic based on your game's interaction system
+            if (hit.collider.CompareTag("Interactable"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }*/
 }
