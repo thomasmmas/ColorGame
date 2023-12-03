@@ -90,22 +90,17 @@ public class ColorChange : MonoBehaviour
             StartCoroutine(Swimming(col.collider));
             rb.mass = 10;
         }
+        else if (col.gameObject.tag == "BlueObstacle" && (col.gameObject.name == "Bridge") && (rend.material.color == Color.white))
+        {
+            SoundEffect[0].Play();
+            //rb.AddForce(transform.up * 1000);
+            Invoke("back", 0.2f);
+        }
         else
         {
             SoundEffect[0].Play();
         }
     }
-
-    /*
-    void OnCollisionStay(Collision col)
-    {
-        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
-        {
-            print("swimming");
-            SoundEffect[5].Play();
-        }
-    }
-    */
 
     // Update is called once per frame
     void Update()
@@ -140,5 +135,11 @@ public class ColorChange : MonoBehaviour
 
         Faze.isTrigger = false;
         rb.mass = 5;
+    }
+
+    //repels character back
+    void back()
+    {
+        rb.AddForce(transform.forward * -50000);
     }
 }
