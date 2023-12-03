@@ -21,7 +21,7 @@ public class UITrigger3 : MonoBehaviour
     {
         if (other.CompareTag("MainGuyRig")) // Make sure the object exiting the trigger is the player
         {
-            Debug.Log("Entered trigger zone: " + gameObject.name);
+            Debug.Log("Exited trigger zone: " + gameObject.name);
             SceneManager.UnloadSceneAsync(uiSceneName);
             uiCanvas.SetActive(false);
         }
