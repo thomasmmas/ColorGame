@@ -56,8 +56,8 @@ public class ImprovController : MonoBehaviour
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
 
-        var moveDirection = currentLookDirection * verticalInput /*+ transform.right * horizontalInput*/;
-        moveDirection += transform.right * horizontalInput;
+        var moveDirection = Camera.main.transform.forward * verticalInput + Camera.main.transform.right * horizontalInput /*+ transform.right * horizontalInput*/;
+        //moveDirection += transform.right * horizontalInput;
         moveDirection.Normalize();
         var vel = moveDirection * _speed;
         vel.y = _rb.velocity.y;
