@@ -823,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComp: {fileID: 491790781}
   Dlines:
-  - Hello, the name is Koole and I need your help!
+  - Hello, the name is Koole and I need your help! (middle mouse click to continue.)
   - A person named Neulan has been running amuck sapping color from landscapes and
     throwing off the balance of this world.
   - Colors, in case you didn't know, are how we interract with our world and traverse
