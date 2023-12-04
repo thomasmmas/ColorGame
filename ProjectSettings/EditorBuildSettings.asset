@@ -6,24 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MenuScreens/WinScreen.unity
+    path: Assets/Scenes/MenuScreens/WinScreen.unity
     guid: a1eb5b8b80d1dbb4894d89c49108ff82
   - enabled: 1
-    path: Assets/ColorGame.unity
+    path: Assets/Scenes/ColorGame.unity
     guid: 9a74ee37508a3da44b3af57eb39ff673
   - enabled: 1
-    path: Assets/HelperUI1.unity
+    path: Assets/Scenes/HelperUI1.unity
     guid: 75023ad408bd2f8478d8321f6e1b31ab
   - enabled: 1
-    path: Assets/HelperUI2.unity
+    path: Assets/Scenes/HelperUI2.unity
     guid: 13aeef2459460024b84ea677d0582a13
   - enabled: 1
-    path: Assets/HelperUI3.unity
+    path: Assets/Scenes/HelperUI3.unity
     guid: 8b7f75b77d75b614fa8d283a58d60eb6
   - enabled: 1
-    path: Assets/HelperUI4.unity
+    path: Assets/Scenes/HelperUI4.unity
     guid: 48d279ea81e39c74ea973f540e80bf13
   - enabled: 1
-    path: Assets/HelperUI5.unity
+    path: Assets/Scenes/HelperUI5.unity
     guid: 21adf6b635c08f74f9eb2b36bcae971a
   m_configObjects: {}

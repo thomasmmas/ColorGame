@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pickup : MonoBehaviour
 {
@@ -39,6 +40,26 @@ public class Pickup : MonoBehaviour
             }
         }
 
+        /*
+        if (Input.GetMouseButtonDown(1))
+        {
+            float distance = Vector3.Distance(Grabber.position, transform.position);
+
+            if (distance <= range)
+            {
+                GrabObject();
+            }
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            if (Grabbed)
+            {
+                ReleaseObject();
+            }
+        }
+        */
+
         //Pressing "Q" changes color of rock
         if (Grabbed && Input.GetKeyDown(KeyCode.Q))
         {
@@ -47,6 +68,7 @@ public class Pickup : MonoBehaviour
         }
     }
 
+    
     void OnMouseDown()
     {
       
@@ -65,6 +87,7 @@ public class Pickup : MonoBehaviour
             ReleaseObject();
         }
     }
+    
 
     void GrabObject()
     {
@@ -112,6 +135,13 @@ public class Pickup : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.freezeRotation = true;
+            Invoke("SceneChange", 1.5f);
         }
+    }
+
+    void SceneChange()
+    {
+        SceneManager.LoadScene("WinScreen");
+        //SceneManager.SetActiveScene(WinScreen);
     }
 }
