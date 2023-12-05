@@ -13,6 +13,9 @@ public class ColorChange : MonoBehaviour
 
     public AudioSource[] SoundEffect;
 
+    //Swimming UI
+    [SerializeField] GameObject SwimmingUI;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,9 @@ public class ColorChange : MonoBehaviour
 
         //rigidbody for mass
         rb = GetComponent<Rigidbody>();
+
+        //Swimming UI
+        SwimmingUI.SetActive(false);
     }
 
     //Color changes
@@ -130,10 +136,12 @@ public class ColorChange : MonoBehaviour
     private IEnumerator Swimming(Collider Faze)
     {
         Faze.isTrigger = true;
+        SwimmingUI.SetActive(true);
 
         yield return new WaitForSeconds(3.0f);
 
         Faze.isTrigger = false;
+        SwimmingUI.SetActive(false);
         rb.mass = 5;
     }
 
