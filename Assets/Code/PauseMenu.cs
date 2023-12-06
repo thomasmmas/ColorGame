@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] GameObject InfoScreen;
+    [SerializeField] GameObject CenterDot;
+    [SerializeField] GameObject QuitButton;
 
     private bool paused = false;
 
@@ -13,6 +15,8 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         InfoScreen.SetActive(false);
+        CenterDot.SetActive(true);
+        QuitButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,7 +27,8 @@ public class PauseMenu : MonoBehaviour
             paused = true;
             Time.timeScale = 0;
             InfoScreen.SetActive(true);
-            //QuitButton.SetActive(true);
+            CenterDot.SetActive(false);
+            QuitButton.SetActive(true);
         }
 
         else if (Input.GetKeyUp(KeyCode.Tab))
@@ -31,7 +36,8 @@ public class PauseMenu : MonoBehaviour
             paused = false;
             Time.timeScale = 1;
             InfoScreen.SetActive(false);
-            //QuitButton.SetActive(false);
+            CenterDot.SetActive(true);
+            QuitButton.SetActive(false);
         }
     }
 }

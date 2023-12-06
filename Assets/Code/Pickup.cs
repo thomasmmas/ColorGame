@@ -121,7 +121,7 @@ public class Pickup : MonoBehaviour
             //Debug.Log("Throw direction" + throwDir);
 
             // Apply force in the direction of the mouse cursor
-            rb.velocity = throwDir * 30f;
+            rb.velocity = throwDir * 40f;
         }
     }
 
@@ -137,6 +137,8 @@ public class Pickup : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.freezeRotation = true;
             Invoke("SceneChange", 1.0f);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         //for some reason searching for orange doesn't work so it searches for anything but the following
@@ -145,6 +147,8 @@ public class Pickup : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.freezeRotation = true;
             Invoke("SceneChange", 1.0f);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

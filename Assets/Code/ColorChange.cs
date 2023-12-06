@@ -83,7 +83,9 @@ public class ColorChange : MonoBehaviour
     {
         if (col.gameObject.tag == "BlueObstacle" && rend.material.color == Color.blue)
         {
-            StartCoroutine (Timer(col.collider));
+            //StartCoroutine (Timer(col.collider));
+            col.collider.isTrigger = true;
+            SoundEffect[2].Play();
         }
         else if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.yellow || rend.material.color == Color.red))
         {
@@ -93,7 +95,9 @@ public class ColorChange : MonoBehaviour
         }
         else if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
         {
-            StartCoroutine(Swimming(col.collider));
+            //StartCoroutine(Swimming(col.collider));
+            col.collider.isTrigger = true;
+            SwimmingUI.SetActive(true);
             rb.mass = 10;
         }
         else if (col.gameObject.tag == "BlueObstacle" && (col.gameObject.name == "Bridge") && (rend.material.color == Color.white))
@@ -105,6 +109,21 @@ public class ColorChange : MonoBehaviour
         else
         {
             SoundEffect[0].Play();
+        }
+    }
+
+    //activates when you leave triggered area
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
+        {
+            SwimmingUI.SetActive(false);
+            col.isTrigger = false;
+            rb.mass = 5;
+        }
+        else if (col.gameObject.tag == "BlueObstacle" && rend.material.color == Color.blue)
+        {
+            col.isTrigger = false;
         }
     }
 

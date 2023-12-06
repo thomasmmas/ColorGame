@@ -9,7 +9,7 @@ public class Respawn : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(transform.position.y < threshold)
+        if (transform.position.y < threshold)
         {
             transform.position = new Vector3(-191.51f, 0.31f, 113.7703f);
         }
