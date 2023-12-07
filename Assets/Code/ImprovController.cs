@@ -5,17 +5,18 @@ using System;
 
 public class ImprovController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 1;
-    [SerializeField] private float _jumpForce = 200;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _jumpForce;
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float mouseSensitivity = 2.0f;
-    [SerializeField] private float rotationSmoothing = 10.0f;
+    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private float rotationSmoothing;
     [SerializeField] private Rect turningArea = new Rect(0.4f, 0.4f, 0.4f, 0.4f);
     private Animator anim;
     public GameObject footstep;
     public GameObject JumpSE;
     public GameObject SE_Swimming;
     public bool swimming;
+    public float maxUpwardVelocity;
 
     Renderer rend;
 
@@ -32,16 +33,15 @@ public class ImprovController : MonoBehaviour
         SE_Swimming.SetActive(false);
         swimming = false;
         rend = GetComponent<Renderer>();
+        //_rb = GetComponent<Rigidbody>();
         rend.enabled = true;
-        /*Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;*/
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Camera.main.transform.position.y));
         Vector3 directionToMouse = mousePosition - transform.position;
@@ -49,15 +49,16 @@ public class ImprovController : MonoBehaviour
 
         if (directionToMouse != Vector3.zero)
         {
-            Vector3 targetLookDirection = directionToMouse.normalized;
+            Vector3 targetLookDirection = directionToMouse.normalized * mouseSensitivity;
             currentLookDirection = Vector3.Slerp(currentLookDirection, targetLookDirection, Time.deltaTime * rotationSmoothing);
         }
 
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
 
-        var moveDirection = Camera.main.transform.forward * verticalInput + Camera.main.transform.right * horizontalInput /*+ transform.right * horizontalInput*/;
-        //moveDirection += transform.right * horizontalInput;
+
+        var moveDirection = (currentLookDirection * verticalInput + transform.right * horizontalInput).normalized;
+        moveDirection += transform.right * horizontalInput;
         moveDirection.Normalize();
         var vel = moveDirection * _speed;
         vel.y = _rb.velocity.y;
@@ -83,6 +84,7 @@ public class ImprovController : MonoBehaviour
 
         timeSinceAction += Time.deltaTime;
 
+        //Detection to see if character should jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if ((GroundCheck() & timeSinceAction > actionCooldown) || swimming == true)
@@ -93,22 +95,26 @@ public class ImprovController : MonoBehaviour
                 Invoke("Jump", 0.7f);
             }
         }
-        /*if (Input.GetMouseButtonDown(0))
+
+        if (_rb.velocity.y > maxUpwardVelocity)
         {
-            if (Cursor.lockState != CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            Vector3 newVelocity = _rb.velocity;
+            newVelocity.y = Mathf.Lerp(newVelocity.y, -4000, Time.deltaTime);
+            _rb.velocity = newVelocity;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = Cursor.lockState != CursorLockMode.Locked;
-        }*/
 
-      
+        //Tab button turns off and on the cursor
+        if (Input.GetKeyUp(KeyCode.Tab) && Cursor.visible == true)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void Jump()
@@ -123,11 +129,12 @@ public class ImprovController : MonoBehaviour
         JumpSE.SetActive(false);
     }
 
+    //checks to see if touching the ground
     bool GroundCheck()
     {
         RaycastHit hit;
         float distance = 1f;
-        Vector3 dir = new Vector3(0, -1);
+        Vector3 dir = new Vector3(0, -3);
 
         if (Physics.Raycast(transform.position, dir, out hit, distance))
         {
@@ -143,7 +150,7 @@ public class ImprovController : MonoBehaviour
     {
         if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
         {
-            print("swimming");
+            //print("swimming");
             swimming = true;
             SE_Swimming.SetActive(true);
         }
@@ -153,7 +160,7 @@ public class ImprovController : MonoBehaviour
     {
         if (col.gameObject.tag == "BlueObstacle" && (rend.material.color == Color.magenta || rend.material.color == Color.green))
         {
-            print("not swimming");
+            //print("not swimming");
             swimming = false;
             SE_Swimming.SetActive(false);
         }

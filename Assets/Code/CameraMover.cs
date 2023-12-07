@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMover : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity;
     public Transform playerBody;
     public Transform orientation;
     float xRotation = 0f;

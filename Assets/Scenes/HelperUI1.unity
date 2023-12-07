@@ -462,7 +462,7 @@ SpriteRenderer:
   m_Size: {x: 5.43, y: 4.98}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &682028105
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb6a18feafaa80a4bb623f06c4bdca49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cee0856c7654fed4aaf6206e78f28b29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -832,6 +832,8 @@ MonoBehaviour:
     you desire. All you need is to step into puddles and absorb its hue.
   - To leave the castle you need to be the same color as the wall so that you can
     pass through it. Go use the puddle over there to do so.
+  - If you have any questions, feel free to ask for help. (Tab for pause menu and
+    information.)
   textSpeed: 0.01
   dialogueAudio: {fileID: 1249282647}
 --- !u!114 &1446459228

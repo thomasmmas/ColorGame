@@ -91,7 +91,7 @@ public class Pickup : MonoBehaviour
 
     void GrabObject()
     {
-        Debug.Log("Object Grabbed");
+        //Debug.Log("Object Grabbed");
         Grabbed = true;
         originalPos = transform.position;
 
@@ -118,9 +118,10 @@ public class Pickup : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Vector3 throwDir = ray.direction;
 
-            Debug.Log("Throw direction" + throwDir);
+            //Debug.Log("Throw direction" + throwDir);
+
             // Apply force in the direction of the mouse cursor
-            rb.velocity = throwDir * 30f;
+            rb.velocity = throwDir * 40f;
         }
     }
 
@@ -131,11 +132,23 @@ public class Pickup : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.freezeRotation = true;
         }
-        else if (col.gameObject.tag == "GreenObject" && (materialRend.material.color == Color.magenta || materialRend.material.color.g == 128))
+        else if (col.gameObject.tag == "GreenObject" && (materialRend.material.color == Color.magenta))// || materialRend.material.color.g == 128))
         {
             rb.constraints = RigidbodyConstraints.FreezePosition;
             rb.freezeRotation = true;
-            Invoke("SceneChange", 1.5f);
+            Invoke("SceneChange", 1.0f);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        //for some reason searching for orange doesn't work so it searches for anything but the following
+        else if (col.gameObject.tag == "GreenObject" && (materialRend.material.color != Color.red && materialRend.material.color != Color.yellow && materialRend.material.color != Color.blue && materialRend.material.color != Color.green && materialRend.material.color != Color.white))
+        {
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.freezeRotation = true;
+            Invoke("SceneChange", 1.0f);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
